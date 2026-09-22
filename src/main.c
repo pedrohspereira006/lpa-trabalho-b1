@@ -2,16 +2,17 @@
 
 int main (void) {
 	int opcao;
-	float distancia, subtotal;
+	float subtotal;
 	
 	do {
-		menuExibir ();
+		exibirMenu ();
 		
 		opcao = escolhaOpcao();
+		
+		if (opcao != 0) {
 		distancia = distanciaExata();
 		subtotal = subtotalInicial();
-		
-		
+	}
 		
 	}
 	while (opcao != 0);

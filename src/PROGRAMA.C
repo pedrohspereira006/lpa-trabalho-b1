@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include "PROGRAMA.h"
 
-void menuExibir(void) {
+float distancia;
+float valorBase;
+
+void exibirMenu(void) {
 	printf("SISTEMA DE ENTREGAS");
 	printf("\nSelecione a faixa de distancia: ");
 	printf("\n1- Maior que 0 ate 5 Km........R$8,00");
@@ -13,12 +16,12 @@ void menuExibir(void) {
 
 int escolhaOpcao(void) {
 	int opcao;
-	float valorBase;
 	scanf("%d", &opcao);
 	
 	while (opcao < 0 || opcao > 4) {
 		printf("Opcao invalida\n");
 		printf("Digite novamente: ");
+		scanf("%d", &opcao);
 	}
 	if (opcao==1) {
 	valorBase = 8;
@@ -33,7 +36,9 @@ int escolhaOpcao(void) {
 	valorBase = 25;
 	}
 	
+	if (opcao != 0) {
 	printf("Valor Base: %.2f\n", valorBase);
+}
 
 	return opcao;
 }
@@ -41,15 +46,15 @@ int escolhaOpcao(void) {
 float distanciaExata(void) {
 	float distancia;
 	printf("Digite a distancia: \n");
-	scanf(" %.2f\n", &distancia);
-	
+	scanf(" %f", &distancia);
+	return distancia;	
 }
 
 float subtotalInicial(void) {
-	float subtotal, distancia, valorBase;
+	float subtotal;
 	subtotal = valorBase + (distancia * 1.20f);
 	
-	printf("Subtotal Inicial: %.2f\n", subtotal);
+	printf("\nSubtotal Inicial: %.2f\n", subtotal);
 	
 	return subtotal;
 }
