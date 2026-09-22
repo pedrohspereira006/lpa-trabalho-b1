@@ -3,6 +3,7 @@
 int main (void) {
 	int opcao;
 	float subtotal;
+	int opcao2;
 	
 	do {
 		exibirMenu ();
@@ -13,7 +14,9 @@ int main (void) {
 		distancia = distanciaExata();
 		subtotal = subtotalInicial();
 	}
+		menuPeso ();
 		
+		opcao2 = opcaoPeso(subtotal);
 	}
 	while (opcao != 0);
 	
