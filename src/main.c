@@ -1,24 +1,33 @@
-#include "PROGRAMA.C"
+#include "PROGRAMA.c"
 
 int main (void) {
-	int opcao;
-	float subtotal;
-	int opcao2;
+	float distancia, peso;
+	float subtotal, subtotalpeso;
+	float subtotalmoda, subtotalpro;
+	int opcao, opcaop;
 	
 	do {
-		exibirMenu ();
-		
-		opcao = escolhaOpcao();
-		
-		if (opcao != 0) {
 		distancia = distanciaExata();
-		subtotal = subtotalInicial();
-	}
-		menuPeso ();
 		
-		opcao2 = opcaoPeso(subtotal);
-	}
-	while (opcao != 0);
-	
+		if (distancia != 0) {
+			subtotal = subtotalinicial(distancia);
+			peso = pesagemExata();
+			subtotalpeso = adicionalPeso(peso, subtotal);
+		}
+		
+		opcao = exibirmodalidade();
+		
+			if (opcao !=0){
+			subtotalmoda = modalidade(opcao, subtotal, subtotalpeso);
+}
+
+		opcaop = opcaoProtecao();
+		
+		if (opcao !=0) {
+			subtotalpro = protecao(opcaop, subtotalmoda);
+		}
+		
+	} while (distancia != 0); 
+
 	return 0;
 }

@@ -1,6 +1,20 @@
-void exibirMenu(void);
-int escolhaOpcao(void);
+#ifndef PROGRAMA_h
+#define PROGRAMA_h
+
 float distanciaExata(void);
-float subtotalInicial(void);
-void menuPeso(void);
-int opcaoPeso(float subtotal);
+
+float subtotalinicial(float distancia);
+
+float pesagemExata(void);
+
+float adicionalPeso(float peso, float subtotal);
+
+int exibirmodalidade(void);
+
+float modalidade(int opcao, float subtotal, float subtotalpeso);
+
+int opcaoprotecao(void);
+
+float protecao (int opcaop, float subtotalmoda);
+
+#endif
