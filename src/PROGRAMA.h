@@ -1,14 +1,14 @@
-#ifndef teste_h
-#define teste_h
+#ifndef PROGRAMA_h
+#define PROGRAMA_h
 
 float distanciaExata(void);
 float subtotalinicial(float distancia);
-float pesagemExata(void);
+float pesagemValida(void);
 float adicionalPeso(float peso, float subtotal);
 int exibirmodalidade(void);
 float modalidade(int opcao, float subtotal, float subtotal_atualA);
 int opcaoprotecao(void);
-float protecao (int opcaop, float subtotal_atualB);
+float taxaprotecao (int opcaop, float subtotal_atualB);
 int novaentrega(void);
 
 #endif
