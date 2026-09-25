@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "PROGRAMA.h"
+#include "teste.h"
 
 float distanciaExata(void) {
 	printf("\nSISTEMA DE ENTREGAS");
@@ -65,7 +65,7 @@ float pesagemExata(void) {
 float adicionalPeso(float peso, float subtotal) {
 	float percentual;
 	float taxaPeso= 0;
-	float subtotalpeso = 0;
+	float subtotal_atualA = 0;
 	
 	if (peso >0 && peso <=2) {
 	percentual = 0;
@@ -84,10 +84,10 @@ float adicionalPeso(float peso, float subtotal) {
 	taxaPeso = percentual * subtotal;
 	printf("Adicional de peso: %.2f\n", taxaPeso);
 	
-	subtotalpeso = subtotal + taxaPeso;
-	printf("Subtotal atual com adicional de peso: %.2f\n", subtotalpeso);
+	subtotal_atualA = subtotal + taxaPeso;
+	printf("Subtotal atual com adicional de peso: %.2f\n", subtotal_atualA);
 }
-	return subtotalpeso;
+	return subtotal_atualA;
 }
 
 //EXIBICAO E SELECAO DE MODALIDADE
@@ -111,10 +111,10 @@ int exibirmodalidade(void) {
 
 
 //CALCULO DO ADICIONAL DE MODALIDADE.
-float modalidade(int opcao, float subtotal, float subtotalpeso) {
+float modalidade(int opcao, float subtotal, float subtotal_atualA) {
 	float percentualModa;
 	float taxamodalidade = 0;
-	float subtotalmoda = 0;
+	float subtotal_atualB = 0;
 	
 	if (opcao==1) {
 	percentualModa = 0;
@@ -128,14 +128,15 @@ float modalidade(int opcao, float subtotal, float subtotalpeso) {
 	
 	printf("\nPercentual da modalidade de entrega: %.f%%\n", percentualModa*100);
 	
-	if (opcao != 1){
+	if (opcao != 0){
 	taxamodalidade = percentualModa * subtotal;
 	printf("Adicional de modalidade: %.2f\n", taxamodalidade);
 	
-	subtotalmoda = subtotalpeso + taxamodalidade;
-	printf("Subtotal atual com adicional de modalidade: %.2f\n", subtotalmoda);
-}
-	return subtotalmoda;
+	subtotal_atualB = subtotal_atualA + taxamodalidade;
+	printf("Subtotal atual com adicional de modalidade: %.2f\n", subtotal_atualB);
+} 
+
+	return subtotal_atualB;
 }
 
 //OPCAO DE PROTECAO
@@ -150,7 +151,7 @@ int opcaoProtecao (void) {
 	
 	scanf("%d", &opcaop);
 	while (opcaop < 0 || opcaop > 1) {
-	printf("Opcao invalida\n");
+	printf("Opcao nao listada\n");
 	printf("Digite novamente: ");
 	scanf("%d", &opcaop);
 }
@@ -160,9 +161,9 @@ int opcaoProtecao (void) {
 //CALCULO SUBTOTAL COM SERVICO DE PROTECAO
 //SE HOUVER.
 
-float protecao (int opcaop, float subtotalmoda) {
+float protecao (int opcaop, float subtotal_atualB) {
 	float taxaprotecao;
-	float subtotalpro = 0;
+	float subtotal_atualC = 0;
 	
 	if (opcaop==0) {
 	taxaprotecao = 0;
@@ -170,10 +171,30 @@ float protecao (int opcaop, float subtotalmoda) {
 	taxaprotecao = 7.50;
 	} 
 	
-	if (opcaop=! 0) {
-		subtotalpro = subtotalmoda + taxaprotecao;
-		printf("Subtotal atual com servico de protecao: %.2f\n", subtotalpro);
+	if (opcaop!= 0) {
+		subtotal_atualC = subtotal_atualB + taxaprotecao;
+		if (taxaprotecao>0) {
+		printf("Subtotal atual com servico de protecao: %.2f\n", subtotal_atualC);
+		} else {
+		printf("Subtotal atual sem servico de protecao: %.2f\n", subtotal_atualC);
+		}
 	}
-	return subtotalpro;
+	return subtotal_atualC;
 }
 
+
+int novaentrega(void) {
+	int prosseguir;
+	
+	printf("\n0- Encerrar");
+	printf("\n1- Nova entrega");
+	printf("\nDeseja solicitar uma nova entrega?: ");
+	
+	scanf("%d", &prosseguir);
+	while (prosseguir < 0 || prosseguir > 1) {
+	printf("Opcao nao listada\n");
+	printf("Digite novamente: ");
+	scanf("%d", &prosseguir);
+}
+	return prosseguir;
+}	
