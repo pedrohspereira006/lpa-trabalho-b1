@@ -9,6 +9,8 @@ int exibirmodalidade(void);
 float modalidade(int opcao, float subtotal, float subtotal_atualA);
 int opcaoprotecao(void);
 float taxaprotecao (int opcaop, float subtotal_atualB);
+int tentativas(void);
+float adicionalTentativa(int qtdTentativas);
 int novaentrega(void);
 
 #endif

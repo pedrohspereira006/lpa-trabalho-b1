@@ -188,6 +188,34 @@ float taxaprotecao (int opcaop, float subtotal_atualB) {
 
 
 
+int tentativas (void) {
+	int qtdTentativas;
+	printf("\nQuantas vezes deseja repetir esta mesma entrega?: ");
+	
+	scanf("%d", &qtdTentativas);
+	
+	while (qtdTentativas < 0) {
+		printf("Valor invalido para repeticoes\n");
+		printf("Digite novamente: ");
+		
+		scanf("%d", &qtdTentativas);
+	}	
+	return qtdTentativas;
+	
+}
+
+
+
+
+float adicionalTentativa(int qtdTentativas) {
+	float addTentativas;
+	
+	addTentativas = qtdTentativas*4.00f;
+	
+	return addTentativas;
+}
+
+
 
 
 int novaentrega(void) {
@@ -195,7 +223,7 @@ int novaentrega(void) {
 	
 	printf("\n0- Encerrar");
 	printf("\n1- Nova entrega");
-	printf("\nDesseja solicitar nova entrega?: ");
+	printf("\nDeseja solicitar nova entrega?: ");
 	
 	scanf("%d", &prosseguir);
 	

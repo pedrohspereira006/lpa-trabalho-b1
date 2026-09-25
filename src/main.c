@@ -6,9 +6,10 @@ int main (void) {
 	float subtotal, subtotal_atualA;
 	float subtotal_atualB, subtotal_atualC;
 	float total;
-	float adicionalTentativa;
 	float percentual, taxaPeso;
 	float protecao,  percentualModa, taxamodalidade;
+	float addTentativas;
+	int qtdTentativas;
 	
 	int opcao, opcaop, prosseguir;
 	
@@ -24,7 +25,6 @@ int main (void) {
 	
 	do {
 		entregas++;
-		adicionalTentativa = (entregas -1) * 4.00f;
         
 		distancia = distanciaExata();
 		
@@ -41,30 +41,34 @@ int main (void) {
 		
 		opcao = exibirmodalidade();
 
-		taxamodalidade = modalidade(opcao, subtotal, subtotal_atualA);
+		if (opcao !=0){
 
-		subtotal_atualB = subtotal_atualA + taxamodalidade; 
+			taxamodalidade = modalidade(opcao, subtotal, subtotal_atualA);
 
-			if (opcao == 1) {
-    			economica++;
-			} else if (opcao == 2) {
-    			expressa++;
-			} else if (opcao == 3) {
-   				prioritaria++;		
-			}
+			subtotal_atualB = subtotal_atualA + taxamodalidade; 
+
+			
+				if (opcao == 1) {
+    				economica++;
+				} else if (opcao == 2) {
+    				expressa++;
+				} else if (opcao == 3) {
+   					prioritaria++;		
+				}
+	}
 
 
 
 		opcaop = opcaoProtecao();
-
 		protecao= taxaprotecao(opcaop, subtotal_atualB);
-		
 		subtotal_atualC = subtotal_atualB + protecao;
 		
 		
-		prosseguir = novaentrega();
 		
-		total = subtotal_atualC + adicionalTentativa;
+		qtdTentativas = tentativas();
+		addTentativas= adicionalTentativa(qtdTentativas);
+		
+		total = subtotal_atualC + addTentativas;
 		
 		if (entregas == 1) {
     		maior = total;
@@ -81,9 +85,10 @@ int main (void) {
 		totalCalculado = totalCalculado + total;
 		media = totalCalculado / entregas;
 		
-		printf("\nAdicional de nova entrega: R$%.2f", adicionalTentativa);
+		printf("\nTaxa de tentativas adicionais: R$%.2f", addTentativas);
 		printf("\nTotal da entrega: R$%.2f\n", total);
-	
+		
+		prosseguir = novaentrega();
 			
 }	while (prosseguir != 0);
 
@@ -103,8 +108,6 @@ int main (void) {
     printf("\nEXPRESSA: %d", expressa);
     printf("\nPRIORITARIA: %d", prioritaria);
     
-    
-	
 		
 	return 0;
 }
