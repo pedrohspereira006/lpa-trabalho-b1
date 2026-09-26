@@ -63,14 +63,12 @@ cenário, tentativas e adicional tentativas estão impedindo a compilação, com
 
 ##Resultados Fornecidos:
 
-##1- "O erro está nesta linha do main.c:
+## 1- "O erro está nesta linha do main.c:
 
 subtotal = subtotalInicial(float distancia, float valorBase);
 
 Ao chamar uma função em C, você não deve declarar os tipos dos argumentos. Os tipos são informados apenas na definição ou no protótipo da função.
-
 A chamada correta seria:
-
 subtotal = subtotalInicial(distancia, valorBase);
 
 Porém, há outro problema importante no seu código: valorBase é declarado dentro de escolhaOpcao():
@@ -78,65 +76,52 @@ Porém, há outro problema importante no seu código: valorBase é declarado den
 int escolhaOpcao(void) {
     int opcao;
     float valorBase;
-
 Portanto, essa variável só existe dentro de escolhaOpcao(). No main(), você não tem acesso a ela.
 
 Além disso, escolhaOpcao() retorna apenas opcao, e não valorBase. Se o objetivo da atividade é evitar ponteiros e permitir que distancia e valorBase sejam compartilhadas entre as funções, você pode declará-las como variáveis globais."
 
-##2- "O problema não está na função modalidade() em si. O problema está em como subtotalpeso está sendo criado e passado no main.c.
-
+## 2- "O problema não está na função modalidade() em si. O problema está em como subtotalpeso está sendo criado e passado no main.c.
 1. Onde está o problema
 
 Na sua função adicionalPeso() você calcula corretamente:
-
 subtotalpeso = subtotalinicial + taxaPeso;
 
 Porém, essa variável:
-
 float subtotalpeso = 0;
 
 é uma variável local de adicionalPeso().
 
 Isso significa que ela só existe dentro dessa função. Quando você faz:
-
 return taxaPeso;
 
 a função não retorna subtotalpeso, retorna apenas taxaPeso.
 
 No main.c, você declarou:
-
 float subtotalinicial, subtotalpeso, subtotalmoda;
 
 mas essa declaração cria outra variável, independente da subtotalpeso que existe dentro de adicionalPeso().
-
 E, principalmente, você nunca atribui um valor a ela.
 
 Você faz:
-
 taxaPeso = adicionalPeso(peso, subtotalinicial);
 
 mas não faz:
-
 subtotalpeso = ...;
 
 Consequentemente, quando chega aqui:
-
 opcao = modalidade(subtotalpeso);
 
 o subtotalpeso do main está sem valor inicial definido."
 
-##3- "O problema não está relacionado a ponteiros. Você pode corrigir tudo isso usando apenas variáveis comuns e funções com return.
+## 3- "O problema não está relacionado a ponteiros. Você pode corrigir tudo isso usando apenas variáveis comuns e funções com return.
 
 O principal problema é que, no main.c, você está dando o mesmo nome para uma variável e para uma função.
-
 1. O conflito com tentativas
 
 Você declarou:
-
 int tentativas;
 
 e depois faz:
-
 tentativas = tentativas();
 
 Aqui tentativas está sendo usado simultaneamente como:
@@ -147,29 +132,22 @@ função int tentativas(void)
 Em C, isso gera conflito porque ambos pertencem ao mesmo espaço de nomes.
 
 Por isso, quando o compilador chega em:
-
 tentativas();
 
 ele pode interpretar tentativas como a variável int, e não como uma função.
 
 2. O mesmo acontece com adicionalTentativa
-
 Você declarou:
-
 float adicionalTentativa;
 
 e depois:
-
 addTentativas = adicionalTentativa(tentativas);
 
 Novamente, adicionalTentativa já foi declarado como uma variável no main, mas você também possui uma função com esse nome:
-
 float adicionalTentativa(int tentativas)
-
 Então há outro conflito."
 
-##4- "Se você quer encontrar o maior e o menor valor obtido durante um ciclo for ou while e exibi-los somente depois que o ciclo terminar, a ideia é:
-
+## 4- "Se você quer encontrar o maior e o menor valor obtido durante um ciclo for ou while e exibi-los somente depois que o ciclo terminar, a ideia é:
 Criar duas variáveis para armazenar o maior e o menor.
 A cada repetição, comparar o valor atual com elas.
 Depois do ciclo, imprimir os valores.
@@ -206,19 +184,21 @@ int main(void) {
   -  return 0;
 }"
 
-##Sugestões Aproveitadas/Aplicadas:
-##1 - Até o terceiro commit (fora o inicial) a solução aproveitada foi declarar a distância e valorBase como variáveis globais. Em suas primeiras versões, o código continha o menu de seleção de faixa de distância com os valores, solicitava a escolha e uma opção e, apenas depois, para o cálculo de subtotal, solicitava a distância exata.
+## Sugestões Aproveitadas/Aplicadas:
+## 1 - Até o terceiro commit (fora o inicial):
+a solução aproveitada foi declarar a distância e valorBase como variáveis globais. Em suas primeiras versões, o código continha o menu de seleção de faixa de distância com os valores, solicitava a escolha e uma opção e, apenas depois, para o cálculo de subtotal, solicitava a distância exata.
 Contudo, a sugestão foi descartada a partir do quarto commit, pois contava com um fluxo desnecessariamente massivo. Então foi reescrita a solução removendo o menu (que não deveria estar lá), solicitando a distância separadamente (reaproveitando apenas a validação), e definir as regras do valorBase para cada faixa de distância, juntamente com o cálculo do subtotal, tornou a solução mais consistente do que apenas declarar tudo como global, além de aprimorar o encadeamento das funções a partir do quarto commit e as versões posteriores.
 
-##2 Definição do calculo que compoe o valor de "subtotalPeso" que foi renomeado posteriormente (subtotal_atualA):
+## 2 Definição do calculo que compoe o valor de "subtotalPeso" que foi renomeado posteriormente (subtotal_atualA):
 "subtotal_atualA = subtotal + taxaPeso;"
 
-##3 -Alteração da declaração da função e das variáveis.
+## 3 -Alteração da declaração da função e das variáveis.
 função: tentativas. variável: float qteTentativas
 função adicionalTentativa. variável: float addTentativas.
 
 
-##4- "int main (void) {
+## 4- trecho acrescentado ao main:
+"int main (void) {
 	...
 	...
 	float maior;
