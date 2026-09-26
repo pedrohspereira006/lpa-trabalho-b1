@@ -40,11 +40,11 @@ O processamento ocorre no fluxo: os dados são coletados e os valores correspond
 O programa foi desenvolvido em C e pode ser compilado utilizando o compilador GCC.
 
 no terminal:
-gcc main.c -o programa
+gcc main.c PROGRAMA.c -o programa
  
 
 ## Execução 
-Após a compilação, execute o programa no arquivo main.exe que será gerado.
+Após a compilação, execute o programa no arquivo exe que será gerado.
  
 ## Uso de Inteligência Artificial 
 Houve o uso do ChatGPT com a finalidade de auxiliar na definição de maior e menor valor, auxiliar na declaração das variáveis dentro das funções e solucionar conflitos na compilação.
