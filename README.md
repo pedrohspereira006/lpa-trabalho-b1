@@ -53,7 +53,7 @@ Prompts relevantes:
 1- "(Foi inserido como contexto antes do prompt: o PROGRAMA.c do primeiro commit)
 Cenário: mesmo após definir parâmetros para subtotalInicial, a fim de que ele use os valores de distancia e valorBase nas funções anteriores, informa a "falta de argumentos" para subtotalInicial e informa a necessidade de uma expressão antes de "float". Considerando os códigos acima e o cenário apresentado, qual erro pode ter ocorrido que impede a compilação?"
 
-2- "(Foi inserido como contexto antes do prompt: o PROGRAMA.c, PROGRAMA.h e main.c do segundo commit)
+2- "(Foi inserido como contexto antes do prompt: o PROGRAMA.C, PROGRAMA.h e main.c do segundo commit)
 Cenário: na função "int modalidade (subtotalpeso) a compilação reconhece o percentual, porém não consegue identificar/puxar o valor de "subtotalpeso" da função "float adicionalpeso". Por isso, ele também não consegue calcular o valor de taxamodalidade. O que pode ter ocorrido para a função primeiramente mencionada não ter conseguido puxar o valor "subtotalpeso"."
 
 3- "(foi inserido como contexto antes do prompt:  o PROGRAMA.c, PROGRAMA.h e main.c, estes não registrados em commit devido ao erro de compilação)
