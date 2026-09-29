@@ -35,14 +35,10 @@ PROGRAMA.c contém os cálculos e exibição explícitos, que destrincha o que c
 O processamento ocorre no fluxo: os dados são coletados e os valores correspondente aos adicionais são definidos e o total da entrega atual é exibida ao final. O resumo com faturamento apenas é exibido após o encerramento.
 
 ## OBSERVAÇÃO
-Os arquivos que fazem parte da solução final são apenas "main.c", "PROGRAMA.c" e "PROGRAMA.h". O arquivo "PROGRAMA.C" (diferencial: caractere .C, em maiúsculo) foi deletado devido à duplicidade.
-
+Os arquivos que fazem parte da solução final são apenas "PROGRAMA.c" e "PROGRAMA.h". O arquivo "PROGRAMA.C" (diferencial: caractere .C, em maiúsculo) foi deletado devido à duplicidade. OBS: a função "main.c" foi acoplada à "PROGRAMA.c" pela função 'int main' para que programa seja testável.
 
 ## Compilação 
-O programa foi desenvolvido em C e pode ser compilado utilizando o compilador GCC.
-
-no terminal:
-gcc main.c PROGRAMA.c -o programa
+A função "main.c" foi acoplada à "PROGRAMA.c", para corrigir o erro de compilação devido à inconsistência da implementação dos três arquivos principais.
  
 
 ## Execução 
